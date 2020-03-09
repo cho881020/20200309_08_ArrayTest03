@@ -145,8 +145,8 @@ public class MainDrive {
 //				0번과 1번중 0번이 더 크다? => 바꿔줘야.
 //				아니다? => 현상 유지.
 				
-//				앞의 칸의 숫자가 더 작다면?
-				if (userLottoArr[j] < userLottoArr[j+1]) {
+//				앞의 칸의 숫자가 더 크다면?
+				if (userLottoArr[j] > userLottoArr[j+1]) {
 //					두 칸에 들어있는 값을 바꿔줘야함.
 					
 					int backUp = userLottoArr[j];
