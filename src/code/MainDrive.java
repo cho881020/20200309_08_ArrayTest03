@@ -29,7 +29,26 @@ public class MainDrive {
 				System.out.print((i+1) + "번째 숫자 입력 : ");
 				int tempInput = scan.nextInt();
 				
-				if (true) {
+//				검사 1. 1~45의 숫자가 맞는가?
+//				검사 결과는 true / false. boolean으로 저장.
+				boolean isRangeOk = false;
+				
+//				검사로직 : 1보다 크거나 같고, 45보다 작거나 같다를 동시에 만족해야 true.
+				
+				if (1 <= tempInput && tempInput <= 45) {
+//					범위 검사에 통과한 상황에만 진입.
+//					검사 결과를 true로 설정.
+					isRangeOk = true;
+				}
+				else {
+//					범위 밖의 숫자다! => 검사결과를 false로 설정.
+					isRangeOk = false;
+//					범위 밖의 숫자라는 안내 메세지 출력
+					System.out.println("1~45의 숫자만 입력 가능합니다.");
+				}
+				
+//				무조건 true => 범위 검사 결과 반영.
+				if (isRangeOk) {
  					userLottoArr[i] = tempInput;
 					break;
 				}
