@@ -89,6 +89,11 @@ public class MainDrive {
 		}
 		
 		
+//		입력한 값이 어떤값들인지 출력.
+		for (int num : userLottoArr) {
+			System.out.println(num);
+		}
+		
 		
 	}
 	
