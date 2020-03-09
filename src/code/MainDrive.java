@@ -88,52 +88,81 @@ public class MainDrive {
 			
 		}
 		
-//		1. Selection Sort
-//		 => 별개의 배열에 정렬된 결과를 저장.
-		int[] orderedNumArray = new int[6];
+////		1. Selection Sort
+////		 => 별개의 배열에 정렬된 결과를 저장.
+//		int[] orderedNumArray = new int[6];
+//		
+////		원본(userLottoArr)을 돌아보면서 하나하나 작은 값을 집어넣자.
+//		
+////		결과를 저장하는데 사용되는 for문 => ordered에 연관
+//		for (int i=0 ; i < orderedNumArray.length ; i++) {
+//			
+////			원본 내부의 최소값을 찾는 for문 => userLotto에 연관
+////			일단 맨 앞 숫자가 제일 작다고 전제 => 뒤로 가면서 더 작은 값이 있나?
+////			내가 알던 최소값보다 더 작은걸 발견하면, 최소값을 갱신.
+////			최종적으로 결정된 최소값은 배열에 집어넣고 => 검사대상에서 제외. (9999로 변경)
+//			
+////			0번칸의 값이 제일 작다고 전제.
+//			int minNum = userLottoArr[0];
+////			그 최소값이 몇번칸이지도 기록.
+//			int minNumIndex = 0;
+//			
+//			for (int j=0 ; j < userLottoArr.length ; j++) {
+//				
+////				배열 안에서 더 작은 값을 발견!
+//				if(userLottoArr[j] < minNum) {
+//					
+////					새로운 최소값을 발견했으니 갱신시켜줌.
+//					minNum = userLottoArr[j];
+////					그 최소값이 어느 위치인지도 기록.
+//					minNumIndex = j;
+//					
+//				}
+//			}
+//			
+////			여기에 남아있는 minNum이 제일 작은 값.
+////			정렬된 배열에 최소값을 맞는 자리에 대입.
+//			orderedNumArray[i] = minNum;
+//			
+////			입력한 최소값을 9999로 변경. (검사대상에서 제외)
+//			userLottoArr[minNumIndex] = 9999;
+//			
+//			
+//		}
 		
-//		원본(userLottoArr)을 돌아보면서 하나하나 작은 값을 집어넣자.
 		
-//		결과를 저장하는데 사용되는 for문 => ordered에 연관
-		for (int i=0 ; i < orderedNumArray.length ; i++) {
+//		2. Bubble Sort 구현.
+//		userLottoArr을 곧바로 수정.
+		
+//		반복요소 2개. 1) 쌍을묶어서 자리바꾸기검사 + 2) 이 과정을 통으로 반복.
+		
+//		검사를 통으로 반복시키는 for
+		for (int i=0 ; i < userLottoArr.length ; i++) {
 			
-//			원본 내부의 최소값을 찾는 for문 => userLotto에 연관
-//			일단 맨 앞 숫자가 제일 작다고 전제 => 뒤로 가면서 더 작은 값이 있나?
-//			내가 알던 최소값보다 더 작은걸 발견하면, 최소값을 갱신.
-//			최종적으로 결정된 최소값은 배열에 집어넣고 => 검사대상에서 제외. (9999로 변경)
-			
-//			0번칸의 값이 제일 작다고 전제.
-			int minNum = userLottoArr[0];
-//			그 최소값이 몇번칸이지도 기록.
-			int minNumIndex = 0;
-			
-			for (int j=0 ; j < userLottoArr.length ; j++) {
+//			두 숫자씩 묶어서 검사 for
+			for (int j=0 ; j < userLottoArr.length-1 ; j++) {
+//				6개 숫자 : 0번칸,1번칸 / 1,2 / ... / 4,5
+//				0번과 1번중 0번이 더 크다? => 바꿔줘야.
+//				아니다? => 현상 유지.
 				
-//				배열 안에서 더 작은 값을 발견!
-				if(userLottoArr[j] < minNum) {
+//				앞의 칸의 숫자가 더 크다면?
+				if (userLottoArr[j] > userLottoArr[j+1]) {
+//					두 칸에 들어있는 값을 바꿔줘야함.
 					
-//					새로운 최소값을 발견했으니 갱신시켜줌.
-					minNum = userLottoArr[j];
-//					그 최소값이 어느 위치인지도 기록.
-					minNumIndex = j;
+					int backUp = userLottoArr[j];
+					userLottoArr[j] = userLottoArr[j+1];
+					userLottoArr[j+1] = backUp;
 					
 				}
 			}
 			
-//			여기에 남아있는 minNum이 제일 작은 값.
-//			정렬된 배열에 최소값을 맞는 자리에 대입.
-			orderedNumArray[i] = minNum;
-			
-//			입력한 최소값을 9999로 변경. (검사대상에서 제외)
-			userLottoArr[minNumIndex] = 9999;
-			
-			
 		}
+		
 		
 		
 //		입력한 값이 어떤값들인지 출력.
 //		정렬된 입력값을 출력하는것으로 변경.
-		for (int num : orderedNumArray) {
+		for (int num : userLottoArr) {
 			System.out.println(num);
 		}
 		
